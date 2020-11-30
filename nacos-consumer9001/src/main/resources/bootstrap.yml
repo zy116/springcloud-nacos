@@ -1,0 +1,19 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: consumer-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_HOST}
+        namespace: ${NACOS_NAMESPACE}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        prefix: nacos
+        file-extension: yml
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        shared-configs:
+          - provider-server.yml
+  main:
+    allow-bean-definition-overriding: true
